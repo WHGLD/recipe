@@ -1,0 +1,280 @@
+body {
+/*	ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;*/
+/*    box-sizing: border-box;*/
+	font-family: PT Serif,Georgia,serif;
+	font-size: 14px;
+    color: #2d2e36;
+    background-color: #fff3d3;
+    margin: 0;
+    padding: 0;
+    line-height: 1.56;
+}
+
+h3 {
+	text-transform: uppercase;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    letter-spacing: 1px !important;
+    &:before {
+    	content: "";
+	    display: block;
+	    position: absolute;
+	    width: 100px;
+	    margin-left: -115px;
+	    height: 14px;
+	    background: #7da24c;
+	    border-radius: 4px;
+    }
+}
+
+.recipe-title {
+	span {
+	    display: block;
+	    text-align: center;
+	    margin-top: 10px;
+		color: #E66D0B;
+	}
+	&:before {
+		display:none;
+	}
+}
+
+.header {
+	width: 100%;
+	.menu {
+		padding-top: 15px;
+    	text-align: center;
+		height: 60px;
+		.search {
+			cursor: pointer;
+			position: fixed;
+			right: 0px;
+		    top: 25px;
+		}
+	}
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+	position: fixed;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    box-sizing: border-box;
+	z-index: 999;
+    height: 100vh;
+	padding: 25px;
+
+    background: #fff3d3;
+/*    border-top: 20px solid #5A8C1C;
+	border-bottom: 20px solid #373216;*/
+
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(0.75) translate3d(0, 0.5em, 0);
+
+    opacity: 0;
+	visibility: hidden;
+	&.active {
+		opacity: 1;
+	    transform: scale(1) translate3d(0, 0, 0);
+		visibility: visible;
+	}
+
+	i.search-close {
+		position: absolute;
+	    top: 10px;
+	    right: 10px;
+	}
+
+	.search-btn {
+		width: 100%;
+	    border: 0;
+	    background: #FFA14A;
+	    padding: 5px;
+        margin-top: 25px;
+        &:focus {
+    		color: white;
+        }
+	}
+
+	/* переопределяем компоненты материалайзд */
+	.chips div {
+		border-radius: 0;
+    	background-color: #FFA14A;
+	}
+
+	.chips.focus {
+		box-shadow: none !important;
+		border-bottom: 2px solid #5A8C1C !important;
+	}
+
+	.tabs {
+		.tab {
+			text-align: left;
+			text-transform: none;
+			a {
+				color: #000 !important;
+				background-color: transparent !important;
+			    padding: 0 !important;
+			}
+		}
+		.indicator {
+			background-color: #5A8C1C !important;
+		}
+	}
+
+	.search-inner-wrapper {
+		h3:before {
+			display: none;
+		}
+		.hidden {
+			display: none;
+		}
+	}
+}
+
+
+/* Поиск от гугла */
+.gsc-control-cse {
+	padding: 0 !important;
+	border: 0 !important;
+	font-family: PT Serif,Georgia,serif !important;
+	font-size: 14px !important;
+	.gsc-positioningWrapper {
+		display: none;
+	}
+	.gsc-cursor-box {
+		border: 0 !important;
+	}
+	.gsc-imageResult {
+	    background-color: #fff3d3 !important;
+	    .gsc-expansionArea {
+	    	column-count: 1 !important;
+	    }
+	}
+}
+
+
+.ingridients-wrapper {
+	margin-bottom: 40px;
+
+	table {
+		width: 100%;
+		font-size: 14px;
+	    border-collapse: collapse;
+    	border-spacing: 0;
+    	background-color: transparent;
+
+    	.ingridient-name {
+    		width: 70%;
+    		text-align: left;
+    	}
+    	.ingridient-amount {
+    		width: 30%;
+    		text-align: right;
+    	}
+
+    	td {
+    		padding: 10px 0;
+    	}
+
+    	tr {
+			border-bottom: 1px solid #ddd;
+    	}
+
+    	tr:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+
+.youtube-wrapper {
+	margin-bottom: 40px;
+    padding-bottom: 65%;
+    position: relative;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+	iframe {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    border: 0;
+	}
+}
+
+.steps-wrapper {
+	ol {
+  	    list-style-type: none;
+	    counter-reset: item;
+	    padding: 0;
+	    margin: 0;
+    	li {
+			margin: 20px 0 20px;
+		    position: relative;
+		    padding: 0 0 0 0px;
+	    	p {
+				position: relative;
+			    margin: 0;
+			    &:before {
+				    content: counter(item) '.';
+				    counter-increment: item;
+				    font: 700 22px/1 PT Serif,serif;
+				    color: #7da24c;
+				    padding-right: 5px;
+				}
+			}
+		}
+	}
+}
+
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 15px;
+
+	.read-more {
+		span {
+			background-color: #FFA14A;
+    		margin-right: 5px;
+		}
+	}
+}
+
+/* старые мониторы */
+@media (max-width: 1200px){
+	.container {
+		max-width: 970px;
+	}
+}
+
+/* планшеты */
+@media (max-width: 992px){
+	.container {
+		max-width: 750px;
+	}
+}
+
+/* мобильные устройства */
+@media (max-width: 767px){
+	.container {
+		max-width: none;
+	}
+}
+
+.footer {
+	img {
+		width: 100%;
+	}
+}

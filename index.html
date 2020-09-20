@@ -1,0 +1,214 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/main.css">
+	<!-- <script src="js\script.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+	<div class="header">
+		<div class="menu">
+			<div class="logo">
+				<img src="logo-top.svg" />
+			</div>
+			<div class="search">
+				<img src="search.svg" />
+			</div>
+		</div>
+	</div>
+
+	<div class="search-container">
+
+		<i class="material-icons search-close">close</i>
+
+		<div class="search-inner-wrapper">
+			<h3>Найти рецепт</h3>
+
+			<ul class="tabs tabs-transparent">
+				<li class="tab"><a href="#" data-type="ingridient">По ингридиентам</a></li>
+				<li class="tab"><a class="active" href="#" data-type="name">По названию</a></li>
+			</ul>
+
+			<div class="input-field name-search">
+				<input type="text" class="validate">
+			</div>
+
+			<div class="ingridient-search hidden">
+				<div class="chips chips-placeholder add"></div>
+				<div class="input-field">
+					<span class="helper-text" data-error="wrong" data-success="right">Добавить ингридиенты</span>
+				</div>
+				<div class="chips chips-placeholder exclude"></div>
+				<div class="input-field">
+					<span class="helper-text" data-error="wrong" data-success="right">Исключить ингридиенты</span>
+				</div>
+			</div>
+
+			<input class="search-btn" type="button" value="Найти">
+		</div>
+
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+
+			let searchTypeTabs = document.querySelectorAll('.tabs');
+			M.Tabs.init(searchTypeTabs, {});
+
+			document.querySelectorAll('.tabs a').forEach(tab => {
+				tab.addEventListener("click", event => {
+					let activeSearchType = event.target.dataset.type;
+
+					let nameSearchContainer = document.querySelector('.name-search');
+					let ingridientSearchContainer = document.querySelector('.ingridient-search');
+
+					if (activeSearchType === 'name'){
+						nameSearchContainer.classList.remove("hidden");
+						ingridientSearchContainer.classList.add("hidden");
+					} else {
+						nameSearchContainer.classList.add("hidden");
+						ingridientSearchContainer.classList.remove("hidden");
+					}
+
+				}, false);
+			});
+
+			var add = document.querySelector('.chips-placeholder.add');
+			var exclude = document.querySelector('.chips-placeholder.exclude');
+			var addChip = M.Chips.init(add, {});
+			var excludeChip = M.Chips.init(exclude, {});
+
+			let searchBtn = document.querySelector('.search');
+			let searchBtnClose = document.querySelector('.search-close');
+			let searchContainer = document.querySelector('.search-container');
+			[searchBtn, searchBtnClose].forEach(btn => {
+				btn.addEventListener("click", event => {
+					searchContainer.classList.toggle("active");
+				}, false);
+			});
+
+			let findRecipeBtn = document.querySelector('.search-btn');
+			findRecipeBtn.addEventListener("click", event => {
+				console.log(addChip);
+				console.log(excludeChip);
+			}, false);
+
+		});
+	</script>
+
+	<div class="container">
+
+		<!-- https://cse.google.ru/cse/search/advanced?cx=a042e1a2e50ea523b -->
+		<!-- https://eda.ru/recepty -->
+
+		<!-- шривт в лого Amatic SC -->
+
+		<!-- Страница рецепта -->
+		<h3 class="recipe-title">Пошаговый рецепт:<br/><span>Окрошка</span></h3>
+
+		<!-- Содержание -->
+		
+		<div class="search-results">
+			<script async src="https://cse.google.com/cse.js?cx=a042e1a2e50ea523b"></script>
+			<div class="gcse-searchresults-only"></div>	
+		</div>
+
+		<div class="ingridients-wrapper">
+			<h3>Ингридиенты <!-- Количество ингридиетов --></h3>
+			<table>
+				<tr class="ingridient">
+					<td class="ingridient-name">
+						<span>Кефир обезжиренный или сыворотка (или квас)</span>
+					</td>
+					<td class="ingridient-amount">
+						<span>2-2,5 л</span>
+					</td>
+				</tr>
+				<tr class="ingridient">
+					<td class="ingridient-name">
+						<span>Сметана</span>
+					</td>
+					<td class="ingridient-amount">
+						<span>100 г</span>
+					</td>
+				</tr>
+				<tr class="ingridient">
+					<td class="ingridient-name">
+						<span>Яйца отварные</span>
+					</td>
+					<td class="ingridient-amount">
+						<span>3 шт.</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<h3>Видео по теме</h3>
+		<div class="youtube-wrapper">
+			<iframe 
+				width="560"
+				height="315"
+				src="https://www.youtube.com/embed/Ww-0mgDFm0I?controls=0"
+				frameborder="0" 
+				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen
+			>
+			</iframe>
+		</div>
+
+		<!-- Популярные ингридиенты -->
+
+		<div class="steps-wrapper">
+			<h3>Инструкция приготовления</h3>
+			<ol>
+				<li><p>Картофель хорошо вымыть. Поставить вариться картофель в мундире.</p></li>
+				<li><p>Поставить вариться яйца. Пока они варятся, нарезать мелкими кубиками колбасу.</p></li>
+				<li><p>Вымыть и измельчить зеленый лук. Вымыть и измельчить укроп.</p></li>
+				<li><p>Огурцы помыть и нарезать мелкими кубиками.</p></li>
+				<li><p>Сваренные яйца остудить в холодной воде, очистить. Затем мелко нарезать.</p></li>
+				<li><p>Сваренный картофель остудить в холодной воде, очистить и мелко нарезать.</p></li>
+				<li><p>Всё перемешать, посолить.</p></li>
+				<li><p>Всё залить холодным кефиром, сывороткой или несладким хлебным квасом.</p></li>
+				<li><p>Окрошка с колбасой готова.</p></li>
+			</ol>
+		</div>
+
+		<!-- распечатать кнопку мб -->
+
+		<div class="read-more">
+			<h3>Рекомендуем</h3>
+			<p>
+				<span>Основные блюда</span>
+				<span>Супы</span>
+			</p>
+		</div>
+
+		<!-- Количество просмотро нарандомить или стянуть у видосов с ютуба / 100 -->
+
+		<!-- https://vk.com/dev/widget_comments -->
+	</div>
+
+	<div class="footer">
+		<img src="bottom.svg" />
+	</div>
+
+</body>	
+	
+</html>
+
+
+<!--
+
+hover effects:
+	https://codepen.io/asfo/pen/NdEvzy
+	https://codepen.io/collinscode/pen/qYdxKp
+
+random photo:
+	https://source.unsplash.com/1600x900/?food,cooking
+	https://unsplash.com/documentation#search-photos
+
+ -->
